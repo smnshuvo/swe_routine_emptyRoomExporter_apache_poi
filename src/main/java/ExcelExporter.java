@@ -94,7 +94,7 @@ public class ExcelExporter {
         } catch (Exception e){
             System.err.print("FILE NOT FOUND");
         } finally {
-            getEmptyRooms(routine_sheet, startingCell, sundayStartRow, "Saturday");
+            getEmptyRooms(routine_sheet, sundayStartRow, mondayStartRow, "Saturday");
 
 
         }
@@ -133,46 +133,134 @@ public class ExcelExporter {
                 Cell currentCourseCell_p6 = currentRow.getCell(16); // get a cell by pointing the cell index of a row
                 Cell currentRoomCell_p6 = currentRow.getCell(15);
 
-
-                if (currentCourseCell_p1 != null && currentRoomCell_p1 != null) { // to fix the null pointer exception
-                    if (currentCourseCell_p1.getStringCellValue().isEmpty()  ) { // these are the empty rooms
-                            // IF NOT NULL CHECK, IF EMPTY
-                        try {
-                            if(Character.isDigit(currentRoomCell_p1.getStringCellValue().charAt(0))){
-                                System.out.println(currentRoomCell_p1.getStringCellValue()); // print the element of current row
-                                emptyRooms.add(currentRoomCell_p1.getStringCellValue());
-                            }
-
-                        } catch (StringIndexOutOfBoundsException e){
-                            System.err.println("INDEX OUT OF BOUND");
-                        }
-                        /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
+                try {
+                    if (currentCourseCell_p1 != null && currentRoomCell_p1 != null) { // to fixx the
+                        if (currentCourseCell_p1.getStringCellValue().isEmpty() && Character.isDigit(currentRoomCell_p1.getStringCellValue().charAt(0))) { // these are the empty rooms
+                    /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
                     is a double checking, we are being sure as the room number starts with a digit
                      */
 
+                            System.out.println("p1: "+currentRoomCell_p1.getStringCellValue()); // print the element of current row
+                            emptyRooms.add(currentRoomCell_p1.getStringCellValue());
+                        }
                     }
+
+                } catch (NullPointerException e){
+                    System.err.println("NULL POINTER " + e.toString());
+                    System.err.println(currentRoomCell_p1.getStringCellValue());
+                } catch (StringIndexOutOfBoundsException e){
+                    System.out.println("STRING ERROR "+ e.toString());
                 }
 
-                // +> PERIOD 2
+                // period 2
+                try {
 
-                if (currentCourseCell_p2 != null && currentRoomCell_p2 != null) { // to fix the null pointer exception
-                    if (currentCourseCell_p2.getStringCellValue().isEmpty()  ) { // these are the empty rooms
-                        // IF NOT NULL CHECK, IF EMPTY
-                        try {
-                            if(Character.isDigit(currentRoomCell_p2.getStringCellValue().charAt(0))){
-                                System.out.println(currentRoomCell_p2.getStringCellValue()); // print the element of current row
-                                emptyRooms.add(currentRoomCell_p2.getStringCellValue());
-                            }
-
-                        } catch (StringIndexOutOfBoundsException e){
-                            System.err.println("INDEX OUT OF BOUND");
-                        }
-                        /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
+                        if (currentCourseCell_p2.getStringCellValue().isEmpty() && Character.isDigit(currentRoomCell_p2.getStringCellValue().charAt(0))) { // these are the empty rooms
+                    /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
                     is a double checking, we are being sure as the room number starts with a digit
                      */
 
-                    }
+                            System.out.println("p2: "+currentRoomCell_p2.getStringCellValue()); // print the element of current row
+                            emptyRooms.add(currentRoomCell_p2.getStringCellValue());
+                        }
+
+
+                } catch (NullPointerException e){
+                    System.err.println("NULL POINTER " + e.toString());
+                    System.err.println("p2: " +currentRoomCell_p2.getStringCellValue());
+                    // I GUESS THERE's ONE MORE WORK TO DO
+                    // IF A CELL IS NULL I SHOULD CROSS CHECK THE PREVIOUS CELL
+                    // IF IT CONTAINS ROOM NUMBER
+                } catch (StringIndexOutOfBoundsException e){
+                    System.out.println("STRING ERROR "+ e.toString());
+
                 }
+
+                //>>> PERIOD 3
+                try {
+
+                        if (currentCourseCell_p3.getStringCellValue().isEmpty() && Character.isDigit(currentRoomCell_p3.getStringCellValue().charAt(0))) { // these are the empty rooms
+                    /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
+                    is a double checking, we are being sure as the room number starts with a digit
+                     */
+
+                            System.out.println("p3: "+currentRoomCell_p3.getStringCellValue()); // print the element of current row
+                            emptyRooms.add(currentRoomCell_p3.getStringCellValue());
+                        }
+
+
+                } catch (NullPointerException e){
+                    System.err.println("NULL POINTER " + e.toString());
+                    System.err.println("p3: " +currentRoomCell_p3.getStringCellValue());
+                } catch (StringIndexOutOfBoundsException e){
+                    System.out.println("STRING ERROR "+ e.toString());
+                }
+
+                // Period 4 ==>>
+                try {
+
+                        if (currentCourseCell_p4.getStringCellValue().isEmpty() && Character.isDigit(currentRoomCell_p4.getStringCellValue().charAt(0))) { // these are the empty rooms
+                    /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
+                    is a double checking, we are being sure as the room number starts with a digit
+                     */
+
+                            System.out.println("p4: "+currentRoomCell_p4.getStringCellValue()); // print the element of current row
+                            emptyRooms.add(currentRoomCell_p4.getStringCellValue());
+                        }
+
+
+                } catch (NullPointerException e){
+                    System.err.println("NULL POINTER " + e.toString());
+                    System.err.println("p4: " +currentRoomCell_p3.getStringCellValue());
+                } catch (StringIndexOutOfBoundsException e){
+                    System.out.println("STRING ERROR "+ e.toString());
+                }
+
+
+                // PERIOD 5 ==>>
+                try {
+
+                    if (currentCourseCell_p5.getStringCellValue().isEmpty() && Character.isDigit(currentRoomCell_p5.getStringCellValue().charAt(0))) { // these are the empty rooms
+                    /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
+                    is a double checking, we are being sure as the room number starts with a digit
+                     */
+
+                        System.out.println("p5: "+currentRoomCell_p5.getStringCellValue()); // print the element of current row
+                        emptyRooms.add(currentRoomCell_p5.getStringCellValue());
+                    }
+
+
+                } catch (NullPointerException e){
+                    System.err.println("NULL POINTER " + e.toString());
+                    System.err.println("p5: " +currentRoomCell_p5.getStringCellValue());
+                } catch (StringIndexOutOfBoundsException e){
+                    System.out.println("STRING ERROR "+ e.toString());
+                }
+
+
+                // period 6
+
+                try {
+
+                    if (currentCourseCell_p6.getStringCellValue().isEmpty() && Character.isDigit(currentRoomCell_p6.getStringCellValue().charAt(0))) { // these are the empty rooms
+                    /* Character.isDigit(currentCourseCell.getStringCellValue().charAt(0)))
+                    is a double checking, we are being sure as the room number starts with a digit
+                     */
+
+                        System.out.println("p6: "+currentRoomCell_p6.getStringCellValue()); // print the element of current row
+                        emptyRooms.add(currentRoomCell_p6.getStringCellValue());
+                    }
+
+
+                } catch (NullPointerException e){
+                    System.err.println("NULL POINTER " + e.toString());
+                    System.err.println("p6: " +currentRoomCell_p6.getStringCellValue());
+                } catch (StringIndexOutOfBoundsException e){
+                    System.out.println("STRING ERROR "+ e.toString());
+                }
+
+
+
 
 
             }
